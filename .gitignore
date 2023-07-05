@@ -1,0 +1,13 @@
+# IntelliJ
+/out/
+.idea/
+*.iml
+*.iws
+
+#Maven
+target/
+/build/
+
+dependency-reduced-pom.xml
+config_developer.yml
+

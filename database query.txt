@@ -1,0 +1,40 @@
+CREATE TABLE LottoTicket (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    playerId INT,
+    placedTime TIMESTAMP,
+    amount DECIMAL(10, 2),
+    numbers VARCHAR(255),
+    loyaltyProgramId INT,
+    FOREIGN KEY (playerId) REFERENCES Player(id),
+    FOREIGN KEY (loyaltyProgramId) REFERENCES LoyaltyProgram(id),
+    INDEX idx_playerId (playerId),
+    INDEX idx_placedTime (placedTime),
+    INDEX idx_loyaltyProgramId (loyaltyProgramId)
+);
+
+ 
+
+CREATE TABLE Player (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255),
+    INDEX idx_name (name)
+);
+
+ 
+
+CREATE TABLE LoyaltyProgram (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255),
+    INDEX idx_name (name)
+);
+
+ 
+
+CREATE TABLE PlayerLoyaltyProgram (
+    playerId INT,
+    loyaltyProgramId INT,
+    FOREIGN KEY (playerId) REFERENCES Player(id),
+    FOREIGN KEY (loyaltyProgramId) REFERENCES LoyaltyProgram(id),
+    INDEX idx_playerId (playerId),
+    INDEX idx_loyaltyProgramId (loyaltyProgramId)
+);
